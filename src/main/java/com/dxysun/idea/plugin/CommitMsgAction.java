@@ -5,8 +5,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.ui.NonEmptyInputValidator;
 import com.intellij.psi.PsiFile;
+
+import javax.swing.*;
 
 public class CommitMsgAction extends AnAction {
 
@@ -22,8 +26,14 @@ public class CommitMsgAction extends AnAction {
         String classPath = psiFile.getVirtualFile().getPath();
         String title = "Hello World!";
 
+
         //显示对话框
-        Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
+//        Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
+        Icon icon = new ImageIcon();
+//        Messages.showInputDialog("commitInut", "commitMsg", icon);
+        InputValidator inputValidator = new NonEmptyInputValidator();
+        String[] strings = new String[]{"test1","test2"};
+        Messages.showEditableChooseDialog("commitInut", "commitMsg", icon, strings, "test",inputValidator);
 
 
     }
