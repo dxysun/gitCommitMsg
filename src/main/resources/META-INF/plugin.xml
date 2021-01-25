@@ -31,10 +31,10 @@
     <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationConfigurable parentId="tools" instance="com.dxysun.idea.plugin.AppSettingsConfigurable"
+        <applicationConfigurable parentId="tools" instance="com.dxysun.idea.plugin.GitCommitSettingsConfigurable"
                                  id="com.dxysun.idea.plugin.AppSettingsConfigurable"
                                  displayName="SDK: Application Settings Example"/>
-        <applicationService serviceImplementation="com.dxysun.idea.plugin.AppSettingsState"/>
+        <applicationService serviceImplementation="com.dxysun.idea.plugin.GitCommitSettingsState"/>
     </extensions>
 
     <actions>
