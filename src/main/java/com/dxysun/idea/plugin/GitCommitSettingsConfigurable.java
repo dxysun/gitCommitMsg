@@ -11,9 +11,9 @@ import javax.swing.*;
 /**
  * Provides controller functionality for application settings.
  */
-public class AppSettingsConfigurable implements Configurable {
+public class GitCommitSettingsConfigurable implements Configurable {
 
-  private AppSettingsComponent mySettingsComponent;
+  private GitCommitSettingsComponent mySettingsComponent;
 
   // A default constructor with no arguments is required because this implementation
   // is registered as an applicationConfigurable EP
@@ -21,7 +21,7 @@ public class AppSettingsConfigurable implements Configurable {
   @Nls(capitalization = Nls.Capitalization.Title)
   @Override
   public String getDisplayName() {
-    return "SDK: Application Settings Example";
+    return "GitCommitMsg";
   }
 
   @Override
@@ -32,13 +32,13 @@ public class AppSettingsConfigurable implements Configurable {
   @Nullable
   @Override
   public JComponent createComponent() {
-    mySettingsComponent = new AppSettingsComponent();
+    mySettingsComponent = new GitCommitSettingsComponent();
     return mySettingsComponent.getPanel();
   }
 
   @Override
   public boolean isModified() {
-    AppSettingsState settings = AppSettingsState.getInstance();
+    GitCommitSettingsState settings = GitCommitSettingsState.getInstance();
     boolean modified = !mySettingsComponent.getUserNameText().equals(settings.userId);
     modified |= mySettingsComponent.getIdeaUserStatus() != settings.ideaStatus;
     return modified;
@@ -46,14 +46,14 @@ public class AppSettingsConfigurable implements Configurable {
 
   @Override
   public void apply() {
-    AppSettingsState settings = AppSettingsState.getInstance();
+    GitCommitSettingsState settings = GitCommitSettingsState.getInstance();
     settings.userId = mySettingsComponent.getUserNameText();
     settings.ideaStatus = mySettingsComponent.getIdeaUserStatus();
   }
 
   @Override
   public void reset() {
-    AppSettingsState settings = AppSettingsState.getInstance();
+    GitCommitSettingsState settings = GitCommitSettingsState.getInstance();
     mySettingsComponent.setUserNameText(settings.userId);
     mySettingsComponent.setIdeaUserStatus(settings.ideaStatus);
   }

@@ -16,26 +16,26 @@ import org.jetbrains.annotations.Nullable;
  * these persistent application settings are stored.
  */
 @State(
-        name = "org.intellij.sdk.settings.AppSettingsState",
-        storages = {@Storage("SdkSettingsPlugin.xml")}
+        name = "com.dxysun.idea.plugin.GitCommitSettingsState",
+        storages = {@Storage("GitCommitMsg.xml")}
 )
-public class AppSettingsState implements PersistentStateComponent<AppSettingsState> {
+public class GitCommitSettingsState implements PersistentStateComponent<GitCommitSettingsState> {
 
-  public String userId = "John Q. Public";
+  public String userId = "dxy";
   public boolean ideaStatus = false;
 
-  public static AppSettingsState getInstance() {
-    return ServiceManager.getService(AppSettingsState.class);
+  public static GitCommitSettingsState getInstance() {
+    return ServiceManager.getService(GitCommitSettingsState.class);
   }
 
   @Nullable
   @Override
-  public AppSettingsState getState() {
+  public GitCommitSettingsState getState() {
     return this;
   }
 
   @Override
-  public void loadState(@NotNull AppSettingsState state) {
+  public void loadState(@NotNull GitCommitSettingsState state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 

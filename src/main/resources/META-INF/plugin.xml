@@ -6,7 +6,7 @@
     <id>com.dxysun.idea.plugin.git-commit-msg</id>
 
     <!-- Text to display as name on Preferences/Settings | Plugin page -->
-    <name>SDK: Settings Example</name>
+    <name>GitCommitMsg</name>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -32,8 +32,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable parentId="tools" instance="com.dxysun.idea.plugin.GitCommitSettingsConfigurable"
-                                 id="com.dxysun.idea.plugin.AppSettingsConfigurable"
-                                 displayName="SDK: Application Settings Example"/>
+                                 id="com.dxysun.idea.plugin.GitCommitSettingsConfigurable"
+                                 displayName="GitCommitMsg"/>
         <applicationService serviceImplementation="com.dxysun.idea.plugin.GitCommitSettingsState"/>
     </extensions>
 

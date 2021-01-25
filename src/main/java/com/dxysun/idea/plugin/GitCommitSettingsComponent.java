@@ -3,7 +3,9 @@
 package com.dxysun.idea.plugin;
 
 import com.intellij.ui.components.JBCheckBox;
+import com.intellij.ui.components.JBCheckBoxMenuItem;
 import com.intellij.ui.components.JBLabel;
+import com.intellij.ui.components.JBRadioButton;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -13,16 +15,22 @@ import javax.swing.*;
 /**
  * Supports creating and managing a {@link JPanel} for the Settings Dialog.
  */
-public class AppSettingsComponent {
+public class GitCommitSettingsComponent {
 
   private final JPanel myMainPanel;
   private final JBTextField myUserNameText = new JBTextField();
-  private final JBCheckBox myIdeaUserStatus = new JBCheckBox("Do you use IntelliJ IDEA? ");
+  private final JBCheckBox commitPluginStatus = new JBCheckBox("disable", true);
+  private final JBRadioButton jbRadioButton = new JBRadioButton();
 
-  public AppSettingsComponent() {
+  private final JButton addProfileButton = new JButton("保存配置");
+
+  public GitCommitSettingsComponent() {
+//    commitPluginStatus.setSelected(false);
+
     myMainPanel = FormBuilder.createFormBuilder()
-            .addLabeledComponent(new JBLabel("Enter user name: "), myUserNameText, 1, false)
-            .addComponent(myIdeaUserStatus, 1)
+            .addComponent(jbRadioButton, 1)
+            .addLabeledComponent(new JBLabel("输入配置名称: "), myUserNameText, 1, false)
+            .addComponentToRightColumn(addProfileButton)
             .addComponentFillVertically(new JPanel(), 0)
             .getPanel();
   }
@@ -45,11 +53,11 @@ public class AppSettingsComponent {
   }
 
   public boolean getIdeaUserStatus() {
-    return myIdeaUserStatus.isSelected();
+    return commitPluginStatus.isSelected();
   }
 
   public void setIdeaUserStatus(boolean newStatus) {
-    myIdeaUserStatus.setSelected(newStatus);
+    commitPluginStatus.setSelected(newStatus);
   }
 
 }
